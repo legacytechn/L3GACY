@@ -7,9 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ======================================================
-   L3GACY VISUALS — PORTFOLIO
-====================================================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -21,7 +18,7 @@
   --accent: #890202;
   --grid-c: rgba(255,255,255,0.032);
   --border: rgba(255,255,255,0.07);
-  --border-a: rgba(137,2,2,0.45);
+  --border-a: rgba(137,2,2,0.55);
   --ff-d: 'Space Grotesk', sans-serif;
   --ff-b: 'Inter', sans-serif;
 }
@@ -40,67 +37,58 @@ body {
   overflow-x: hidden;
 }
 
-/* ---- NAV ---- */
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 60px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 52px;
-  background: rgba(12,12,12,0.92);
+  background: rgba(12,12,12,0.94);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
 .logo {
-  font-family: var(--ff-d);
-  font-size: 12px; font-weight: 600;
+  font-family: var(--ff-d); font-size: 12px; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--text); text-decoration: none;
 }
 .logo em { color: var(--accent); font-style: normal; }
-.nav-links { display: flex; gap: 10px; list-style: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--mid); text-decoration: none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
 
-/* ---- HERO ---- */
+/* HERO */
 .hero {
-  height: 100vh;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 20px 34px;
+  padding: 96px 52px 44px;
+  display: flex; flex-direction: column; justify-content: flex-start;
   position: relative;
 }
 .hero-eyebrow {
-  position: absolute; top: 25px; left: 52px;
   font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--muted);
-  display: flex; align-items: center; gap: 14px;
+  color: var(--muted); display: flex; align-items: center; gap: 14px;
+  margin-bottom: 14px;
 }
 .hero-eyebrow::before {
-  content: ''; display: block;
-  width: 20px; height: 1px; background: var(--muted);
+  content: ''; display: block; width: 20px; height: 1px; background: var(--muted);
 }
 .hero-title { position: relative; z-index: 1; }
 .brand-word {
-  display: block;
-  font-family: impact(--ff-d);
-  font-size: clamp(76px, 13.8vw, 200px);
-  font-weight: 700; line-height: 0.86;
-  letter-spacing: -0.028em; color: var(--text);
+  display: block; font-family: var(--ff-d);
+  font-size: clamp(100px, 10vw, 250px);
+  font-weight: 700; line-height: 0.86; letter-spacing: -0.028em; color: var(--text);
 }
 .brand-word em { color: var(--accent); font-style: normal; }
 .brand-sub {
-  display: block;
-  font-family: var(--ff-d);
-  font-size: clamp(26px, 4.4vw, 64px);
+  display: block; font-family: var(--ff-d);
+  font-size: clamp(18px, 3.2vw, 46px);
   font-weight: 300; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--mid);
-  margin-top: 6px; padding-left: 6px;
+  text-transform: uppercase; color: var(--mid); margin-top: 6px; padding-left: 6px;
 }
 .hero-foot {
-  position: relative; z-index: 1;
-  margin-top: 44px; padding-top: 28px;
+  position: relative; z-index: 1; margin-top: 36px; padding-top: 24px;
   border-top: 1px solid var(--border);
   display: flex; align-items: flex-end; justify-content: space-between;
 }
@@ -111,93 +99,155 @@ nav {
   display: flex; align-items: center; gap: 10px; transition: color 0.2s, gap 0.2s;
 }
 .hero-scroll:hover { color: var(--text); gap: 16px; }
-.hero-scroll-line { display: block; height: 1px; width: 36px; background: currentColor; transition: width 0.3s; }
-.hero-scroll:hover .hero-scroll-line { width: 52px; }
+.scroll-line { display: block; height: 1px; width: 36px; background: currentColor; transition: width 0.3s; }
+.hero-scroll:hover .scroll-line { width: 52px; }
 
-/* ---- SECTION SHELL ---- */
+/* SECTION */
 .sect { padding: 76px 52px; border-top: 1px solid var(--border); }
 .sect-hd { display: flex; align-items: center; gap: 18px; margin-bottom: 40px; }
 .sect-label {
-  font-family: var(--ff-d);
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--accent); white-space: nowrap;
+  font-family: var(--ff-d); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); white-space: nowrap;
 }
 .sect-line { flex: 1; height: 1px; background: var(--border); }
 .sect-count { font-size: 10px; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
 
-/* ---- CARD GRID ---- */
+/* GRID */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
+/* CARD — using padding-bottom ratio trick for reliable height */
 .card {
-  position: relative; display: block; text-decoration: none;
-  background: var(--surface); overflow: hidden;
+  display: block; text-decoration: none;
+  background: var(--surface); position: relative;
+  cursor: pointer;
 }
-.card-thumb { aspect-ratio: 4/3; position: relative; overflow: hidden; }
 
-/* fallback gradient background */
-.tb {
-  position: absolute; inset: 0;
-  transition: transform 0.5s cubic-bezier(0.22, 0, 0, 1);
+.card-thumb {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* 4:3 ratio */
+  overflow: hidden;
+  background: #0f0f0f;
 }
-.tb::after {
+
+/* all children of card-thumb fill it fully */
+.thumb-bg,
+.card-video,
+.card-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* gradient placeholder backgrounds (fallback beneath poster/video) */
+.thumb-bg {
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.card:hover .thumb-bg { transform: scale(1.05); }
+
+/* inner texture grid */
+.thumb-bg::before {
   content: ''; position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 22px 22px;
 }
-.tb-num {
+
+/* faint number */
+.thumb-bg::after {
+  content: attr(data-num);
   position: absolute; bottom: 12px; left: 16px;
-  font-family: var(--ff-d); font-size: 48px; font-weight: 700;
-  letter-spacing: -0.03em; color: rgba(255,255,255,0.04);
-  line-height: 1; user-select: none; z-index: 1;
+  font-family: var(--ff-d); font-size: 52px; font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1;
+  color: rgba(255,255,255,0.05);
+  user-select: none;
 }
 
-/* gradient variants */
-.d1 { background: linear-gradient(155deg, #171410 0%, #1d1a12 50%, #131110 100%); }
-.d2 { background: linear-gradient(215deg, #121815 0%, #141510 50%, #111210 100%); }
-.d3 { background: linear-gradient(65deg,  #161315 0%, #1a1515 50%, #121212 100%); }
-.v1 { background: linear-gradient(185deg, #0e0e11 0%, #131315 50%, #0b0b0e 100%); }
-.v2 { background: linear-gradient(128deg, #0f1010 0%, #161513 50%, #0e0e0f 100%); }
-.v3 { background: linear-gradient(295deg, #111014 0%, #141219 50%, #0e0e11 100%); }
-.c1 { background: linear-gradient(148deg, #141418 0%, #191617 50%, #111212 100%); }
-.c2 { background: linear-gradient(238deg, #181414 0%, #161617 50%, #111213 100%); }
-.c3 { background: linear-gradient(38deg,  #141716 0%, #141615 50%, #111413 100%); }
+/* per-card gradients */
+.bg-d1 { background-color: #141210; background-image: linear-gradient(155deg, #171410, #1d1a12 50%, #131110); }
+.bg-d2 { background-color: #121210; background-image: linear-gradient(215deg, #121815, #141510 50%, #111210); }
+.bg-d3 { background-color: #131212; background-image: linear-gradient(65deg,  #161315, #1a1515 50%, #121212); }
+.bg-v1 { background-color: #0e0e0f; background-image: linear-gradient(185deg, #0e0e11, #131315 50%, #0b0b0e); }
+.bg-v2 { background-color: #0f0f0f; background-image: linear-gradient(128deg, #0f1010, #161513 50%, #0e0e0f); }
+.bg-v3 { background-color: #101011; background-image: linear-gradient(295deg, #111014, #141219 50%, #0e0e11); }
+.bg-c1 { background-color: #111114; background-image: linear-gradient(148deg, #141418, #191617 50%, #111212); }
+.bg-c2 { background-color: #131212; background-image: linear-gradient(238deg, #181414, #161617 50%, #111213); }
+.bg-c3 { background-color: #121312; background-image: linear-gradient(38deg,  #141716, #141615 50%, #111413); }
 
-/* hover scale on fallback — disabled when video is present */
-.card:hover .tb { transform: scale(1.05); }
-.card.has-video:hover .tb { transform: none; }
-
-/* ---- VIDEO ELEMENT ---- */
-.card-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0, 0, 1);
-  z-index: 2;
-}
-.card.is-playing .card-video { opacity: 1; transform: scale(1.03); }
-
-/* ---- CARD OVERLAY ---- */
-.card-overlay {
-  position: absolute; inset: 0;
-  background: rgba(8,8,8,0.82);
+/* play icon for video cards */
+.play-icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.3s; z-index: 3;
+  transition: opacity 0.3s, border-color 0.3s;
+  z-index: 3;
+  background: rgba(0,0,0,0.25);
+}
+.play-icon::after {
+  content: '';
+  display: block;
+  width: 0; height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid rgba(255,255,255,0.75);
+  margin-left: 3px;
+}
+.card:hover .play-icon,
+.card.is-playing .play-icon { opacity: 0; }
+
+/* VIDEO — poster image shows immediately; video itself only takes over on hover/play */
+.card-video {
+  object-fit: cover;
+  z-index: 2;
+  background: transparent;
+}
+
+/* When a poster fails to load (or there isn't one), fall back to the gradient tile beneath */
+.card-video.no-poster {
+  display: none;
+}
+
+/* HOVER OVERLAY */
+.card-overlay {
+  background: rgba(6,6,6,0.82);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 4;
+  pointer-events: none;
 }
 .card:hover .card-overlay { opacity: 1; }
-.overlay-tag {
-  font-family: var(--ff-d);
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--accent); border: 1px solid var(--border-a);
-  padding: 10px 22px; transition: border-color 0.2s;
-}
-.card:hover .overlay-tag { border-color: var(--accent); }
 
-/* ---- CARD FOOTER ---- */
+.overlay-tag {
+  font-family: var(--ff-d); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(137,2,2,0.5);
+  padding: 10px 22px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.card:hover .overlay-tag {
+  border-color: var(--accent);
+  background: rgba(137,2,2,0.08);
+}
+
+/* border glow */
+.card-border {
+  position: absolute; inset: 0; z-index: 5;
+  border: 1px solid transparent;
+  transition: border-color 0.25s ease;
+  pointer-events: none;
+}
+.card:hover .card-border { border-color: rgba(137,2,2,0.6); }
+
+/* CARD FOOTER */
 .card-foot {
   display: flex; align-items: center; justify-content: space-between;
   padding: 13px 16px; border-top: 1px solid var(--border);
@@ -205,42 +255,30 @@ nav {
 .c-name { font-family: var(--ff-d); font-size: 12px; font-weight: 500; color: var(--text); }
 .c-tag {
   font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--mid); border: 1px solid var(--border);
-  padding: 3px 8px; white-space: nowrap;
+  color: var(--mid); border: 1px solid var(--border); padding: 3px 8px; white-space: nowrap;
 }
 
-/* border glow on hover */
-.card::after {
-  content: ''; position: absolute; inset: 0; z-index: 4;
-  border: 1px solid var(--border-a);
-  opacity: 0; transition: opacity 0.3s; pointer-events: none;
-}
-.card:hover::after { opacity: 1; }
-
-/* ---- SEE MORE BUTTON (Design) ---- */
+/* SEE MORE */
 .see-more-wrap { margin-top: 24px; display: flex; justify-content: flex-end; }
 .see-more-btn {
-  font-family: var(--ff-d);
-  font-size: 10px; font-weight: 500;
+  font-family: var(--ff-d); font-size: 10px; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--mid); text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 11px 24px;
+  border: 1px solid var(--border); padding: 11px 24px;
   transition: color 0.2s, border-color 0.2s;
   display: inline-flex; align-items: center; gap: 10px;
 }
 .see-more-btn:hover { color: var(--accent); border-color: var(--border-a); }
 
-/* ---- CONTACT ---- */
-#contact {
+/* CONTACT */
+.contact-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 80px;
 }
 .contact-heading {
-  font-family: var(--ff-d);
-  font-size: clamp(34px, 5vw, 60px);
-  font-weight: 700; line-height: 1.08;
-  letter-spacing: -0.02em; color: var(--text); margin-bottom: 18px;
+  font-family: var(--ff-d); font-size: clamp(34px, 5vw, 60px);
+  font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+  color: var(--text); margin-bottom: 18px;
 }
 .contact-sub { font-size: 13px; line-height: 1.85; color: var(--mid); max-width: 320px; }
 .contact-rows { display: flex; flex-direction: column; }
@@ -257,7 +295,7 @@ nav {
 .c-arrow { color: var(--muted); font-size: 16px; transition: transform 0.3s; }
 .c-row:hover .c-arrow { transform: translateX(5px); }
 
-/* ---- FOOTER ---- */
+/* FOOTER */
 footer {
   padding: 28px 52px; border-top: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between;
@@ -269,21 +307,18 @@ footer {
 .f-logo em { color: var(--accent); font-style: normal; }
 .f-note { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
-/* ---- RESPONSIVE ---- */
+/* RESPONSIVE */
 @media (max-width: 960px) {
-  nav, .hero, .sect, footer { padding-left: 28px; padding-right: 28px; }
-  .hero { padding-bottom: 56px; }
-  .hero-eyebrow { left: 28px; }
+  nav, .sect, footer { padding-left: 28px; padding-right: 28px; }
+  .hero { padding: 84px 28px 40px; }
   .grid { grid-template-columns: repeat(2, 1fr); }
-  #contact { grid-template-columns: 1fr; gap: 40px; padding-left: 28px; padding-right: 28px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 580px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero { padding: 0 20px 48px; }
-  .hero-eyebrow { left: 20px; }
+  .hero { padding: 76px 20px 36px; }
   .sect { padding: 52px 20px; }
-  #contact { padding: 52px 20px; }
   footer { padding: 22px 20px; flex-direction: column; gap: 8px; text-align: center; }
   .grid { grid-template-columns: 1fr; }
   .hero-foot { flex-direction: column; align-items: flex-start; gap: 18px; }
@@ -297,8 +332,8 @@ footer {
   <a href="#" class="logo">L<em>3</em>GACY VISUALS</a>
   <ul class="nav-links">
     <li><a href="#video">Video</a></li>
-    <li><a href="#design">Design</a></li>
     <li><a href="#collabs">Collabs</a></li>
+    <li><a href="#extra">Extra</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -313,8 +348,7 @@ footer {
   <div class="hero-foot">
     <p class="hero-desc">Graphic design. Video production.<br>Content built to last, not just trend.</p>
     <a href="#video" class="hero-scroll">
-      <span class="hero-scroll-line"></span>
-      View Work
+      <span class="scroll-line"></span>View Work
     </a>
   </div>
 </section>
@@ -328,96 +362,48 @@ footer {
   </div>
   <div class="grid">
 
-    <a href="https://drive.google.com/file/d/1RPA4bZgfXxBL7Qv--Y99Ox052lZtl5tY/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783695487/Intro_Vid_subs_gaeirm.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783695487/Intro_Vid_subs_gaeirm.mp4">
       <div class="card-thumb">
-        <div class="tb v1"><span class="tb-num">01</span></div>
-        <video class="card-video" muted loop playsinline preload="none">
-          <source src="https://drive.google.com/uc?export=download&id=1RPA4bZgfXxBL7Qv--Y99Ox052lZtl5tY" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-v1" data-num="01"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783695487/Intro_Vid_subs_gaeirm.jpg"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
-        <span class="c-name">Wedding Shoot Highlight</span>
+        <span class="c-name">Intro Video</span>
         <span class="c-tag">Videography</span>
       </div>
+      <div class="card-border"></div>
     </a>
 
-    <a href="https://drive.google.com/file/d/1vdn9V9_b4dp7FOKBzp4guf-8anJPWC1w/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700926/FINALL_1_mx7ngi.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700926/FINALL_1_mx7ngi.mp4">
       <div class="card-thumb">
-        <div class="tb v2"><span class="tb-num">02</span></div>
-        <video class="card-video" muted loop playsinline preload="none">
-          <source src="https://drive.google.com/uc?export=download&id=1vdn9V9_b4dp7FOKBzp4guf-8anJPWC1w" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-v2" data-num="02"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783700926/FINALL_1_mx7ngi.jpg"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
-        <span class="c-name">Editorial Newspaper Highlight</span>
+        <span class="c-name">Art of Music</span>
         <span class="c-tag">Editorial</span>
       </div>
+      <div class="card-border"></div>
     </a>
 
-    <a href="https://drive.google.com/file/d/1ouimKPF8iwiYyYKR64erMwURkcdNWbnA/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://drive.google.com/file/d/1ouimKPF8iwiYyYKR64erMwURkcdNWbnA/view?usp=drive_link" target="_blank" class="card" data-video="https://drive.google.com/uc?export=download&id=1ouimKPF8iwiYyYKR64erMwURkcdNWbnA" data-midpoint="true">
       <div class="card-thumb">
-        <div class="tb v3"><span class="tb-num">03</span></div>
-        <video class="card-video card-video--midpoint" muted loop playsinline preload="metadata">
-          <source src="https://drive.google.com/uc?export=download&id=1ouimKPF8iwiYyYKR64erMwURkcdNWbnA" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-v3" data-num="03"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://drive.google.com/thumbnail?id=1ouimKPF8iwiYyYKR64erMwURkcdNWbnA&sz=w1000"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
         <span class="c-name">Short Film</span>
         <span class="c-tag">Short Film</span>
       </div>
+      <div class="card-border"></div>
     </a>
 
-  </div>
-</section>
-
-<!-- DESIGN -->
-<section id="design" class="sect">
-  <div class="sect-hd">
-    <span class="sect-label">Design</span>
-    <div class="sect-line"></div>
-    <span class="sect-count">Selected works</span>
-  </div>
-  <div class="grid">
-
-    <a href="#" target="_blank" class="card">
-      <div class="card-thumb">
-        <div class="tb d1"><span class="tb-num">01</span></div>
-        <div class="card-overlay"><span class="overlay-tag">View →</span></div>
-      </div>
-      <div class="card-foot">
-        <span class="c-name">Triift Africa Campaign</span>
-        <span class="c-tag">Brand Design</span>
-      </div>
-    </a>
-
-    <a href="#" target="_blank" class="card">
-      <div class="card-thumb">
-        <div class="tb d2"><span class="tb-num">02</span></div>
-        <div class="card-overlay"><span class="overlay-tag">View →</span></div>
-      </div>
-      <div class="card-foot">
-        <span class="c-name">BFI Event Flyer</span>
-        <span class="c-tag">Print & Digital</span>
-      </div>
-    </a>
-
-    <a href="#" target="_blank" class="card">
-      <div class="card-thumb">
-        <div class="tb d3"><span class="tb-num">03</span></div>
-        <div class="card-overlay"><span class="overlay-tag">View →</span></div>
-      </div>
-      <div class="card-foot">
-        <span class="c-name">Social Media Kit</span>
-        <span class="c-tag">Visual Identity</span>
-      </div>
-    </a>
-
-  </div>
-  <div class="see-more-wrap">
-    <a href="#" target="_blank" class="see-more-btn">See All Designs →</a>
   </div>
 </section>
 
@@ -430,46 +416,100 @@ footer {
   </div>
   <div class="grid">
 
-    <a href="https://drive.google.com/file/d/1gYPuuDo05zv6GpzOUloVSrIHcX7_aVIc/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700939/Unbrken_cut_2_v.2_f4isxa.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700939/Unbrken_cut_2_v.2_f4isxa.mp4">
       <div class="card-thumb">
-        <div class="tb c1"><span class="tb-num">01</span></div>
-        <video class="card-video" muted loop playsinline preload="none">
-          <source src="https://drive.google.com/uc?export=download&id=1gYPuuDo05zv6GpzOUloVSrIHcX7_aVIc" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-c1" data-num="01"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783700939/Unbrken_cut_2_v.2_f4isxa.jpg"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
         <span class="c-name">Unbroken</span>
         <span class="c-tag">Second Editor</span>
       </div>
+      <div class="card-border"></div>
     </a>
 
-    <a href="https://drive.google.com/file/d/1OdLWDRuFLExpfzBEArHoOwmKJ6ybb3pF/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701741/LOVE._1_ubpqdh.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701741/LOVE._1_ubpqdh.mp4">
       <div class="card-thumb">
-        <div class="tb c2"><span class="tb-num">02</span></div>
-        <video class="card-video" muted loop playsinline preload="none">
-          <source src="https://drive.google.com/uc?export=download&id=1OdLWDRuFLExpfzBEArHoOwmKJ6ybb3pF" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-c2" data-num="02"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783701741/LOVE._1_ubpqdh.jpg"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
-        <span class="c-name">Can I Have This Date</span>
+        <span class="c-name">Love</span>
         <span class="c-tag">Head Editor</span>
       </div>
+      <div class="card-border"></div>
     </a>
 
-    <a href="https://drive.google.com/file/d/1YexmAgf_-8hACjJHneqty0FtSFlDgHB0/view?usp=drive_link" target="_blank" class="card has-video">
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701761/BULLY_1_jnsct8.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701761/BULLY_1_jnsct8.mp4">
       <div class="card-thumb">
-        <div class="tb c3"><span class="tb-num">03</span></div>
-        <video class="card-video" muted loop playsinline preload="none">
-          <source src="https://drive.google.com/uc?export=download&id=1YexmAgf_-8hACjJHneqty0FtSFlDgHB0" type="video/mp4">
-        </video>
+        <div class="thumb-bg bg-c3" data-num="03"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783701761/BULLY_1_jnsct8.jpg"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
         <span class="c-name">Bully</span>
         <span class="c-tag">Head Director & Editor</span>
       </div>
+      <div class="card-border"></div>
+    </a>
+
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Extra</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">3 works</span>
+  </div>
+  <div class="grid">
+
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/16th_feb_2_rdx1gt.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/16th_feb_2_rdx1gt.mp4">
+      <div class="card-thumb">
+        <div class="thumb-bg bg-d1" data-num="01"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/16th_feb_2_rdx1gt.jpg"></video>
+        <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="c-name">Project 1</span>
+        <span class="c-tag">Triift Africa</span>
+      </div>
+      <div class="card-border"></div>
+    </a>
+
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/20th_mcxc3q.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/20th_mcxc3q.mp4">
+      <div class="card-thumb">
+        <div class="thumb-bg bg-d2" data-num="02"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783349708/20th_mcxc3q.jpg"></video>
+        <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="c-name">Project 2</span>
+        <span class="c-tag">Video</span>
+      </div>
+      <div class="card-border"></div>
+    </a>
+
+    <a href="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/gkobvyqkmc76oq0bm42s.mp4" target="_blank" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/gkobvyqkmc76oq0bm42s.mp4">
+      <div class="card-thumb">
+        <div class="thumb-bg bg-d3" data-num="03"></div>
+        <div class="play-icon"></div>
+        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783349708/gkobvyqkmc76oq0bm42s.jpg"></video>
+        <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="c-name">Project 3</span>
+        <span class="c-tag">Video</span>
+      </div>
+      <div class="card-border"></div>
     </a>
 
   </div>
@@ -477,44 +517,41 @@ footer {
 
 <!-- CONTACT -->
 <section id="contact" class="sect">
-  <div>
-    <h2 class="contact-heading">Let's work<br>together.</h2>
-    <p class="contact-sub">Available for design projects, video production, and social media campaigns. Based in Nigeria, working globally.</p>
-  </div>
-  <div class="contact-rows">
-
-    <a href="https://instagram.com/stephanelkanah" target="_blank" class="c-row">
-      <div class="c-row-left">
-        <span class="c-platform">Instagram</span>
-        <span class="c-handle">@stephanelkanah</span>
-      </div>
-      <span class="c-arrow">→</span>
-    </a>
-
-    <a href="mailto:legacytechn@gmail.com" class="c-row">
-      <div class="c-row-left">
-        <span class="c-platform">Email</span>
-        <span class="c-handle">legacytechn@gmail.com</span>
-      </div>
-      <span class="c-arrow">→</span>
-    </a>
-
-    <a href="https://x.com/l3gcaygraphics" target="_blank" class="c-row">
-      <div class="c-row-left">
-        <span class="c-platform">Twitter / X</span>
-        <span class="c-handle">@l3gcaygraphics</span>
-      </div>
-      <span class="c-arrow">→</span>
-    </a>
-
-    <a href="https://linkedin.com/in/stephanelkanah" target="_blank" class="c-row">
-      <div class="c-row-left">
-        <span class="c-platform">LinkedIn</span>
-        <span class="c-handle">Stephan Elkanah</span>
-      </div>
-      <span class="c-arrow">→</span>
-    </a>
-
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-heading">Let's work<br>together.</h2>
+      <p class="contact-sub">Available for design projects, video production, and social media campaigns. Based in Nigeria, working globally.</p>
+    </div>
+    <div class="contact-rows">
+      <a href="https://instagram.com/stephanelkanah" target="_blank" class="c-row">
+        <div class="c-row-left">
+          <span class="c-platform">Instagram</span>
+          <span class="c-handle">@stephanelkanah</span>
+        </div>
+        <span class="c-arrow">→</span>
+      </a>
+      <a href="mailto:legacytechn@gmail.com" class="c-row">
+        <div class="c-row-left">
+          <span class="c-platform">Email</span>
+          <span class="c-handle">legacytechn@gmail.com</span>
+        </div>
+        <span class="c-arrow">→</span>
+      </a>
+      <a href="https://x.com/l3gcaygraphics" target="_blank" class="c-row">
+        <div class="c-row-left">
+          <span class="c-platform">Twitter / X</span>
+          <span class="c-handle">@l3gcaygraphics</span>
+        </div>
+        <span class="c-arrow">→</span>
+      </a>
+      <a href="https://linkedin.com/in/stephanelkanah" target="_blank" class="c-row">
+        <div class="c-row-left">
+          <span class="c-platform">LinkedIn</span>
+          <span class="c-handle">Stephan Elkanah</span>
+        </div>
+        <span class="c-arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -525,37 +562,63 @@ footer {
 </footer>
 
 <script>
-// ---- HOVER VIDEO PLAYBACK ----
-document.querySelectorAll('.card.has-video').forEach(card => {
+// Lazy-load video src only when first hovered, then play.
+// Poster images (set in HTML) show immediately by default;
+// the actual video only loads and plays on hover.
+// If a poster 404s / fails to decode, we drop it so the
+// per-card gradient tile behind it shows instead of a blank box.
+document.querySelectorAll('.card[data-video]').forEach(card => {
   const video = card.querySelector('.card-video');
-  if (!video) return;
+  const src   = card.dataset.video;
+  const mid   = card.dataset.midpoint === 'true';
+  let loaded  = false;
+
+  // Verify the poster actually loads; if not, remove it and hide
+  // the empty <video> box so the gradient placeholder shows through.
+  const posterUrl = video.getAttribute('poster');
+  if (posterUrl) {
+    const test = new Image();
+    test.onload = () => {}; // poster is good, nothing to do
+    test.onerror = () => {
+      video.removeAttribute('poster');
+      video.classList.add('no-poster');
+    };
+    test.src = posterUrl;
+  }
+
+  if (mid && video) {
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = video.duration / 2;
+    });
+  }
 
   card.addEventListener('mouseenter', () => {
+    if (!loaded) {
+      video.src = src;
+      video.load();
+      loaded = true;
+    }
+    video.classList.remove('no-poster');
     video.play().then(() => {
       card.classList.add('is-playing');
-    }).catch(() => {
-      // Video failed to load — gradient fallback stays visible
-    });
+    }).catch(() => {});
   });
 
   card.addEventListener('mouseleave', () => {
     card.classList.remove('is-playing');
     video.pause();
-    if (video.classList.contains('card-video--midpoint')) {
-      video.currentTime = video.duration ? video.duration / 2 : 0;
-    } else {
-      video.currentTime = 0;
+    if (!mid) video.currentTime = 0;
+    if (!posterUrl || video.classList.contains('no-poster')) {
+      // keep gradient visible when there is no working poster
+      video.classList.add('no-poster');
     }
   });
-});
 
-// ---- SHORT FILM: SEEK TO MIDPOINT ON LOAD ----
-const midpointVideo = document.querySelector('.card-video--midpoint');
-if (midpointVideo) {
-  midpointVideo.addEventListener('loadedmetadata', () => {
-    midpointVideo.currentTime = midpointVideo.duration / 2;
+  // Prevent card link from firing when mousedown starts a hover
+  card.addEventListener('click', e => {
+    // allow default — opens the video in a new tab
   });
-}
+});
 </script>
 </body>
 </html>
