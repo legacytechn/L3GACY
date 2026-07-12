@@ -77,7 +77,7 @@ nav {
 .hero-title { position: relative; z-index: 1; }
 .brand-word {
   display: block; font-family: var(--ff-d);
-  font-size: clamp(100px, 10vw, 250px);
+  font-size: clamp(56px, 10vw, 150px);
   font-weight: 700; line-height: 0.86; letter-spacing: -0.028em; color: var(--text);
 }
 .brand-word em { color: var(--accent); font-style: normal; }
@@ -189,6 +189,7 @@ nav {
   transition: opacity 0.3s, border-color 0.3s;
   z-index: 3;
   background: rgba(0,0,0,0.25);
+  opacity: 0;
 }
 .play-icon::after {
   content: '';
@@ -199,10 +200,11 @@ nav {
   border-left: 12px solid rgba(255,255,255,0.75);
   margin-left: 3px;
 }
-.card:hover .play-icon,
-.card.is-playing .play-icon { opacity: 0; }
+/* videos autoplay by default; hovering pauses them, so show the
+   play icon then as a "click to open" cue */
+.card:hover .play-icon { opacity: 1; }
 
-/* VIDEO — poster image shows immediately; video itself only takes over on hover/play */
+/* VIDEO — autoplays muted on load; hover pauses it so you can click through */
 .card-video {
   object-fit: cover;
   z-index: 2;
@@ -366,7 +368,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-v1" data-num="01"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783695487/Intro_Vid_subs_gaeirm.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783695487/Intro_Vid_subs_gaeirm.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -380,7 +382,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-v2" data-num="02"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783700926/FINALL_1_mx7ngi.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700926/FINALL_1_mx7ngi.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -394,7 +396,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-v3" data-num="03"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://drive.google.com/thumbnail?id=1ouimKPF8iwiYyYKR64erMwURkcdNWbnA&sz=w1000"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://drive.google.com/uc?export=download&id=1ouimKPF8iwiYyYKR64erMwURkcdNWbnA"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -420,7 +422,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-c1" data-num="01"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783700939/Unbrken_cut_2_v.2_f4isxa.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700939/Unbrken_cut_2_v.2_f4isxa.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -434,7 +436,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-c2" data-num="02"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783701741/LOVE._1_ubpqdh.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701741/LOVE._1_ubpqdh.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -448,7 +450,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-c3" data-num="03"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_2.5/v1783701761/BULLY_1_jnsct8.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701761/BULLY_1_jnsct8.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -474,7 +476,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-d1" data-num="01"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/16th_feb_2_rdx1gt.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/16th_feb_2_rdx1gt.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -488,7 +490,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-d2" data-num="02"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783349708/20th_mcxc3q.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/20th_mcxc3q.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -502,7 +504,7 @@ footer {
       <div class="card-thumb">
         <div class="thumb-bg bg-d3" data-num="03"></div>
         <div class="play-icon"></div>
-        <video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_0/v1783349708/gkobvyqkmc76oq0bm42s.jpg"></video>
+        <video class="card-video" muted loop playsinline autoplay preload="auto" src="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/gkobvyqkmc76oq0bm42s.mp4"></video>
         <div class="card-overlay"><span class="overlay-tag">Watch →</span></div>
       </div>
       <div class="card-foot">
@@ -562,56 +564,38 @@ footer {
 </footer>
 
 <script>
-// Lazy-load video src only when first hovered, then play.
-// Poster images (set in HTML) show immediately by default;
-// the actual video only loads and plays on hover.
-// If a poster 404s / fails to decode, we drop it so the
-// per-card gradient tile behind it shows instead of a blank box.
+// Videos autoplay muted as soon as they're loaded — no hover delay.
+// Hovering a card pauses its video (so the still frame + play icon
+// signal "click to open"); moving away resumes autoplay.
+// If a video errors out (bad URL, blocked host, etc.), we hide it
+// so the per-card gradient tile behind it shows instead of a blank box.
 document.querySelectorAll('.card[data-video]').forEach(card => {
   const video = card.querySelector('.card-video');
-  const src   = card.dataset.video;
   const mid   = card.dataset.midpoint === 'true';
-  let loaded  = false;
-
-  // Verify the poster actually loads; if not, remove it and hide
-  // the empty <video> box so the gradient placeholder shows through.
-  const posterUrl = video.getAttribute('poster');
-  if (posterUrl) {
-    const test = new Image();
-    test.onload = () => {}; // poster is good, nothing to do
-    test.onerror = () => {
-      video.removeAttribute('poster');
-      video.classList.add('no-poster');
-    };
-    test.src = posterUrl;
-  }
 
   if (mid && video) {
     video.addEventListener('loadedmetadata', () => {
+      // start playback partway in rather than at frame 0
       video.currentTime = video.duration / 2;
-    });
+    }, { once: true });
   }
 
+  video.addEventListener('error', () => {
+    video.classList.add('no-poster'); // reveals the gradient tile beneath
+  });
+
+  video.play().catch(() => {
+    // autoplay blocked (rare for muted video) — fall back to gradient
+    video.classList.add('no-poster');
+  });
+
   card.addEventListener('mouseenter', () => {
-    if (!loaded) {
-      video.src = src;
-      video.load();
-      loaded = true;
-    }
-    video.classList.remove('no-poster');
-    video.play().then(() => {
-      card.classList.add('is-playing');
-    }).catch(() => {});
+    video.pause();
   });
 
   card.addEventListener('mouseleave', () => {
-    card.classList.remove('is-playing');
-    video.pause();
-    if (!mid) video.currentTime = 0;
-    if (!posterUrl || video.classList.contains('no-poster')) {
-      // keep gradient visible when there is no working poster
-      video.classList.add('no-poster');
-    }
+    video.classList.remove('no-poster');
+    video.play().catch(() => {});
   });
 
   // Prevent card link from firing when mousedown starts a hover
