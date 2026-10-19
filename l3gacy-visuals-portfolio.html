@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L3GACY VISUALS — Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0C0C0C; --surface: #111111; --text: #EAEAEA;
+  --muted: #3C3C3C; --mid: #747474; --accent: #890202;
+  --grid-c: rgba(255,255,255,0.032);
+  --border: rgba(255,255,255,0.07); --border-a: rgba(137,2,2,0.55);
+  --ff-d: 'Space Grotesk', sans-serif; --ff-b: 'Inter', sans-serif;
+  --card-w: 420px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid-c) 1px,transparent 1px),linear-gradient(90deg,var(--grid-c) 1px,transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text); font-family: var(--ff-b);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
+/* NAV */
+nav { position: fixed; top:0; left:0; right:0; z-index:100; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 48px; background:rgba(12,12,12,0.94); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+.logo { font-family:var(--ff-d); font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--text); text-decoration:none; }
+.logo em { color:var(--accent); font-style:normal; }
+.nav-right { display:flex; align-items:center; gap:24px; }
+.nav-links { display:flex; gap:22px; list-style:none; }
+.nav-links a { font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text); }
+
+/* PAUSE BUTTON */
+.pause-btn { background:none; border:1px solid var(--border); color:var(--mid); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; font-family:var(--ff-d); font-weight:600; padding:7px 14px; cursor:pointer; transition:color 0.2s,border-color 0.2s; white-space:nowrap; }
+.pause-btn:hover { color:var(--text); border-color:rgba(255,255,255,0.2); }
+.pause-btn.is-paused { color:var(--accent); border-color:var(--border-a); }
+
+/* INTRO BAR */
+.intro-bar { padding: 100px 52px 64px; border-bottom: 1px solid var(--border); }
+.intro-bar h1 { font-family:var(--ff-d); font-size:clamp(32px,5vw,60px); font-weight:700; letter-spacing:-0.02em; color:var(--text); margin-bottom:12px; }
+.intro-bar h1 em { color:var(--accent); font-style:normal; }
+.intro-bar p { font-size:14px; color:var(--mid); max-width:480px; line-height:1.7; }
+
+/* SECTION */
+.sect { padding:64px 0; border-top:1px solid var(--border); }
+.sect-hd { display:flex; align-items:center; gap:18px; margin-bottom:32px; padding:0 48px; }
+.sect-label { font-family:var(--ff-d); font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--text); white-space:nowrap; }
+.sect-label em { color:var(--accent); font-style:normal; }
+.sect-line { flex:1; height:1px; background:var(--border); }
+.sect-count { font-size:10px; letter-spacing:0.1em; color:var(--muted); white-space:nowrap; }
+
+/* MARQUEE */
+.marquee-wrap { overflow:hidden; width:100%; cursor:grab; user-select:none; }
+.marquee-wrap:active { cursor:grabbing; }
+.marquee-track { display:flex; gap:2px; width:max-content; }
+
+/* CARD */
+.card { display:block; text-decoration:none; background:var(--surface); width:var(--card-w); flex-shrink:0; position:relative; cursor:pointer; }
+.card-thumb { position:relative; width:100%; padding-bottom:62%; overflow:hidden; background:#0d0d0d; }
+.thumb-bg,.card-video,.card-overlay { position:absolute; top:0; left:0; width:100%; height:100%; }
+.thumb-bg { background-size:cover; background-position:center; transition:transform 0.5s ease; }
+.thumb-bg::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px); background-size:22px 22px; }
+.thumb-bg::after { content:attr(data-num); position:absolute; bottom:10px; left:14px; font-family:var(--ff-d); font-size:52px; font-weight:700; letter-spacing:-0.03em; color:rgba(255,255,255,0.045); user-select:none; }
+.card:hover .thumb-bg { transform:scale(1.03); }
+
+.g-m1{background:linear-gradient(150deg,#100f14,#16131a 50%,#0e0d12)}
+.g-m2{background:linear-gradient(240deg,#110f15,#18131c 50%,#0f0d13)}
+.g-m3{background:linear-gradient(60deg,#0f0e13,#141218 50%,#0d0c11)}
+.g-m4{background:linear-gradient(310deg,#0d0d14,#131219 50%,#0b0b11)}
+.g-v1{background:linear-gradient(185deg,#0e0e11,#131315 50%,#0b0b0e)}
+.g-v2{background:linear-gradient(128deg,#0f1010,#161513 50%,#0e0e0f)}
+.g-v3{background:linear-gradient(295deg,#111014,#141219 50%,#0e0e11)}
+.g-v4{background:linear-gradient(220deg,#0d0e12,#131418 50%,#0b0c10)}
+.g-c1{background:linear-gradient(148deg,#141418,#191617 50%,#111212)}
+.g-c2{background:linear-gradient(238deg,#181414,#161617 50%,#111213)}
+.g-c3{background:linear-gradient(38deg,#141716,#141615 50%,#111413)}
+.g-c4{background:linear-gradient(190deg,#131416,#161818 50%,#101213)}
+.g-d1{background:linear-gradient(155deg,#171410,#1d1a12 50%,#131110)}
+.g-d2{background:linear-gradient(215deg,#121815,#141510 50%,#111210)}
+.g-d3{background:linear-gradient(65deg,#161315,#1a1515 50%,#121212)}
+.g-d4{background:linear-gradient(300deg,#141613,#181a15 50%,#111310)}
+.g-h1{background:linear-gradient(170deg,#0f1210,#131613 50%,#0d100d)}
+.g-h2{background:linear-gradient(250deg,#111410,#151812 50%,#0f1210)}
+.g-h3{background:linear-gradient(80deg,#101310,#141712 50%,#0e110e)}
+.g-h4{background:linear-gradient(330deg,#0f1210,#131513 50%,#0d100e)}
+
+.card-video { object-fit:cover; z-index:2; transition:transform 0.5s ease; }
+.card:hover .card-video { transform:scale(1.03); }
+.card-overlay { background:rgba(6,6,6,0.78); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.25s ease; z-index:3; }
+.card:hover .card-overlay { opacity:1; }
+.overlay-tag { font-family:var(--ff-d); font-size:10px; font-weight:500; letter-spacing:0.24em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(137,2,2,0.5); padding:10px 22px; transition:border-color 0.2s,background 0.2s; }
+.card:hover .overlay-tag { border-color:var(--accent); background:rgba(137,2,2,0.1); }
+.card-border { position:absolute; inset:0; z-index:5; border:1px solid transparent; transition:border-color 0.25s ease; pointer-events:none; }
+.card:hover .card-border { border-color:rgba(137,2,2,0.65); }
+.card-foot { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-top:1px solid var(--border); }
+.c-name { font-family:var(--ff-d); font-size:12px; font-weight:500; color:var(--text); }
+.c-tag { font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); border:1px solid var(--border); padding:3px 8px; white-space:nowrap; }
+
+/* VIDEO CONSOLE */
+.vconsole { position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+.vconsole.is-open { opacity:1; pointer-events:all; }
+.vc-backdrop { position:absolute; inset:0; background:rgba(4,4,4,0.94); backdrop-filter:blur(12px); }
+.vc-panel { position:relative; z-index:1; width:88vw; max-width:1060px; background:#0d0d0d; border:1px solid rgba(255,255,255,0.08); transform:scale(0.95) translateY(20px); transition:transform 0.35s cubic-bezier(0.22,0,0,1); background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px); background-size:40px 40px; }
+.vconsole.is-open .vc-panel { transform:scale(1) translateY(0); }
+.vc-toolbar { display:flex; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid rgba(255,255,255,0.07); background:rgba(10,10,10,0.8); }
+.vc-info { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.vc-brand { font-family:var(--ff-d); font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); }
+.vc-brand em { color:var(--accent); font-style:normal; }
+.vc-dot { width:3px; height:3px; border-radius:50%; background:var(--muted); }
+.vc-title { font-family:var(--ff-d); font-size:12px; font-weight:500; color:var(--text); }
+.vc-tag { font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); border:1px solid var(--border); padding:2px 8px; }
+.vc-close { background:none; border:1px solid var(--border); cursor:pointer; color:var(--mid); font-size:11px; padding:6px 14px; font-family:var(--ff-d); font-weight:500; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.2s,border-color 0.2s; }
+.vc-close:hover { color:var(--text); border-color:rgba(255,255,255,0.2); }
+.vc-screen video { width:100%; display:block; max-height:72vh; background:#000; outline:none; }
+.vc-footer { display:flex; align-items:center; justify-content:space-between; padding:10px 22px; border-top:1px solid rgba(255,255,255,0.07); background:rgba(10,10,10,0.8); }
+.vc-status { font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:6px; }
+.vc-dot-pulse { width:5px; height:5px; border-radius:50%; background:var(--accent); animation:blink 1.8s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.vc-hint { font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); }
+
+/* CONTACT */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px; padding:72px 52px; border-top:1px solid var(--border); }
+.contact-heading { font-family:var(--ff-d); font-size:clamp(30px,5vw,56px); font-weight:700; line-height:1.08; letter-spacing:-0.02em; color:var(--text); margin-bottom:18px; }
+.contact-sub { font-size:13px; line-height:1.85; color:var(--mid); max-width:320px; }
+.contact-rows { display:flex; flex-direction:column; }
+.c-row { display:flex; align-items:center; justify-content:space-between; padding:18px 0; border-bottom:1px solid var(--border); text-decoration:none; transition:padding-left 0.3s; }
+.c-row:hover { padding-left:14px; }
+.c-row-left { display:flex; flex-direction:column; gap:4px; }
+.c-platform { font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+.c-handle { font-family:var(--ff-d); font-size:14px; font-weight:500; color:var(--text); transition:color 0.2s; }
+.c-row:hover .c-handle { color:var(--accent); }
+.c-arrow { color:var(--muted); font-size:16px; transition:transform 0.3s; }
+.c-row:hover .c-arrow { transform:translateX(5px); }
+
+/* MAGNETIC CTA */
+.cta-section { padding:100px 52px; border-top:1px solid var(--border); display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; }
+.cta-label { font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--muted); }
+.cta-heading { font-family:var(--ff-d); font-size:clamp(28px,5vw,52px); font-weight:700; line-height:1.1; letter-spacing:-0.02em; color:var(--text); }
+.cta-heading em { color:var(--accent); font-style:normal; }
+.mag-btn { position:relative; display:inline-flex; align-items:center; justify-content:center; padding:20px 52px; border-radius:100px; background:var(--text); border:1px solid rgba(255,255,255,0.1); cursor:pointer; overflow:hidden; text-decoration:none; white-space:nowrap; font-family:var(--ff-d); font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; box-shadow:0 8px 28px rgba(0,0,0,0.22); will-change:transform; margin-top:8px; transition:box-shadow 0.3s ease; }
+.mag-btn:hover { box-shadow:0 20px 50px rgba(0,0,0,0.32); }
+.mag-sweep { position:absolute; border-radius:50%; background:var(--accent); transform:scale(0); transform-origin:center; pointer-events:none; transition:transform 0.32s cubic-bezier(0.25,0,0,1); z-index:0; }
+.mag-sweep.is-active { transform:scale(1); }
+.mag-label { position:relative; z-index:1; color:#0C0C0C; transition:color 0.28s ease; display:flex; align-items:center; gap:10px; }
+.mag-label.is-hovered { color:#EAEAEA; }
+.mag-arrow { display:inline-block; transition:transform 0.25s ease; }
+.mag-label.is-hovered .mag-arrow { transform:translateX(5px); }
+
+/* FOOTER */
+footer { padding:28px 52px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.f-logo { font-family:var(--ff-d); font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--mid); text-decoration:none; }
+.f-logo em { color:var(--accent); font-style:normal; }
+.f-note { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  nav { padding:0 28px; }
+  .intro-bar,.sect-hd,.contact-grid,footer { padding-left:28px; padding-right:28px; }
+  .contact-grid { grid-template-columns:1fr; gap:40px; padding-top:60px; padding-bottom:60px; }
+  :root { --card-w:320px; }
+}
+@media (max-width:580px) {
+  nav { padding:0 16px; }
+  .nav-links { display:none; }
+  .intro-bar { padding:100px 20px 48px; }
+  .sect-hd { padding:0 20px; }
+  .contact-grid,.cta-section { padding-left:20px; padding-right:20px; }
+  footer { padding:20px; flex-direction:column; gap:8px; text-align:center; }
+  :root { --card-w:280px; }
+  .vc-panel { width:96vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- VIDEO CONSOLE -->
+<div class="vconsole" id="vconsole">
+  <div class="vc-backdrop" id="vc-backdrop"></div>
+  <div class="vc-panel">
+    <div class="vc-toolbar">
+      <div class="vc-info">
+        <span class="vc-brand">L<em>3</em>GACY VISUALS</span>
+        <div class="vc-dot"></div>
+        <span class="vc-title" id="vc-title">Now Playing</span>
+        <span class="vc-tag" id="vc-tag"></span>
+      </div>
+      <button class="vc-close" id="vc-close">ESC / Close</button>
+    </div>
+    <div class="vc-screen"><video id="vc-video" controls playsinline></video></div>
+    <div class="vc-footer">
+      <span class="vc-status"><span class="vc-dot-pulse"></span>Now Playing</span>
+      <span class="vc-hint">Press ESC to close</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="l3gacy-visuals-home.html" class="logo">L<em>3</em>GACY VISUALS</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="l3gacy-visuals-home.html">Home</a></li>
+      <li><a href="#motion">Motion</a></li>
+      <li><a href="#shortfilm">Film</a></li>
+      <li><a href="#collabs">Collabs</a></li>
+      <li><a href="#extra">Extra</a></li>
+      <li><a href="#humble">Humble</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="pause-btn" id="pause-all">&#9646;&#9646; Pause</button>
+  </div>
+</nav>
+
+<!-- INTRO BAR -->
+<div class="intro-bar">
+  <h1>All <em>Works.</em></h1>
+  <p>Motion graphics, short films, collaborations, and everything in between.</p>
+</div>
+
+<!-- 1. MOTION GRAPHICS -->
+<section id="motion" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Motion Graphics</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">4 works</span>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" data-reverse="false">
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790871089/pamela_exivl0.mp4" data-title="Pamela" data-tag="Motion Graphic">
+        <div class="card-thumb"><div class="thumb-bg g-m1" data-num="01"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790871089/pamela_exivl0.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Pamela</span><span class="c-tag">Motion Graphic</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1792402365/cirvia_final_r0j0hy.mp4" data-title="Cervia" data-tag="Motion Graphic">
+        <div class="card-thumb"><div class="thumb-bg g-m2" data-num="02"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1792402365/cirvia_final_r0j0hy.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Cervia</span><span class="c-tag">Motion Graphic</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1792403404/Pamela_3_hptkwa.mp4" data-title="Pamela 2" data-tag="Motion Graphic">
+        <div class="card-thumb"><div class="thumb-bg g-m3" data-num="03"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1792403404/Pamela_3_hptkwa.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Pamela 2</span><span class="c-tag">Motion Graphic</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1792403442/Pam_cntd_flkcva.mp4" data-title="Pamela 3" data-tag="Motion Graphic">
+        <div class="card-thumb"><div class="thumb-bg g-m4" data-num="04"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1792403442/Pam_cntd_flkcva.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Pamela 3</span><span class="c-tag">Motion Graphic</span></div><div class="card-border"></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 2. SHORT FILM -->
+<section id="shortfilm" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Short Film</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">4 works</span>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" data-reverse="true">
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1785082444/Timeline_1_xosbhs.mp4" data-title="MINE" data-tag="Short Film">
+        <div class="card-thumb"><div class="thumb-bg g-v4" data-num="01"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1785082444/Timeline_1_xosbhs.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">MINE</span><span class="c-tag">Short Film</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783695487/Intro_Vid_subs_gaeirm.mp4" data-title="Intro Video" data-tag="Videography">
+        <div class="card-thumb"><div class="thumb-bg g-v1" data-num="02"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783695487/Intro_Vid_subs_gaeirm.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Intro Video</span><span class="c-tag">Videography</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700926/FINALL_1_mx7ngi.mp4" data-title="Art of Music" data-tag="Editorial">
+        <div class="card-thumb"><div class="thumb-bg g-v2" data-num="03"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783700926/FINALL_1_mx7ngi.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Art of Music</span><span class="c-tag">Editorial</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701741/LOVE._1_ubpqdh.mp4" data-title="LOVE" data-tag="Short Film" data-midpoint="true">
+        <div class="card-thumb"><div class="thumb-bg g-v3" data-num="04"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783701741/LOVE._1_ubpqdh.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">LOVE</span><span class="c-tag">Short Film</span></div><div class="card-border"></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3. COLLABORATIONS -->
+<section id="collabs" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Collaborations</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">4 works</span>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" data-reverse="false">
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783700939/Unbrken_cut_2_v.2_f4isxa.mp4" data-title="Unbroken" data-tag="Second Editor">
+        <div class="card-thumb"><div class="thumb-bg g-c1" data-num="01"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783700939/Unbrken_cut_2_v.2_f4isxa.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Unbroken</span><span class="c-tag">Second Editor</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1785081317/RAVE_VERSION_1_cod5te.mp4" data-title="Rave Revival" data-tag="Collaboration">
+        <div class="card-thumb"><div class="thumb-bg g-c2" data-num="02"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1785081317/RAVE_VERSION_1_cod5te.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Rave Revival</span><span class="c-tag">Collaboration</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783701761/BULLY_1_jnsct8.mp4" data-title="Bully" data-tag="Head Director & Editor">
+        <div class="card-thumb"><div class="thumb-bg g-c3" data-num="03"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783701761/BULLY_1_jnsct8.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Bully</span><span class="c-tag">Head Director & Editor</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872733/Final_zbc7lf.mp4" data-title="The Final" data-tag="Collaboration">
+        <div class="card-thumb"><div class="thumb-bg g-c4" data-num="04"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872733/Final_zbc7lf.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">The Final</span><span class="c-tag">Collaboration</span></div><div class="card-border"></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. EXTRA -->
+<section id="extra" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Extra</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">4 works</span>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" data-reverse="true">
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/16th_feb_2_rdx1gt.mp4" data-title="Project 1" data-tag="Triift Africa">
+        <div class="card-thumb"><div class="thumb-bg g-d1" data-num="01"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/16th_feb_2_rdx1gt.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Project 1</span><span class="c-tag">Triift Africa</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/20th_mcxc3q.mp4" data-title="Project 2" data-tag="Video">
+        <div class="card-thumb"><div class="thumb-bg g-d2" data-num="02"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783349708/20th_mcxc3q.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Project 2</span><span class="c-tag">Video</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1783349708/gkobvyqkmc76oq0bm42s.mp4" data-title="Project 3" data-tag="Video">
+        <div class="card-thumb"><div class="thumb-bg g-d3" data-num="03"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1783349708/gkobvyqkmc76oq0bm42s.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Project 3</span><span class="c-tag">Video</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872051/elee_jdnmuo.mp4" data-title="Test Project" data-tag="Extra">
+        <div class="card-thumb"><div class="thumb-bg g-d4" data-num="04"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872051/elee_jdnmuo.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">Test Project</span><span class="c-tag">Extra</span></div><div class="card-border"></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5. HUMBLE BEGINNINGS -->
+<section id="humble" class="sect">
+  <div class="sect-hd">
+    <span class="sect-label">Humble Beginnings</span>
+    <div class="sect-line"></div>
+    <span class="sect-count">4 works</span>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" data-reverse="false">
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872792/new_qtzl03.mp4" data-title="New" data-tag="Early Work">
+        <div class="card-thumb"><div class="thumb-bg g-h1" data-num="01"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872792/new_qtzl03.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">New</span><span class="c-tag">Early Work</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872793/AFREEECAN_rshfel.mp4" data-title="African" data-tag="Early Work">
+        <div class="card-thumb"><div class="thumb-bg g-h2" data-num="02"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872793/AFREEECAN_rshfel.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">African</span><span class="c-tag">Early Work</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872800/TREC_19color0_v9hpsi.mp4" data-title="TREC" data-tag="Early Work">
+        <div class="card-thumb"><div class="thumb-bg g-h3" data-num="03"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872800/TREC_19color0_v9hpsi.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">TREC</span><span class="c-tag">Early Work</span></div><div class="card-border"></div>
+      </a>
+
+      <a href="#" class="card" data-video="https://res.cloudinary.com/tv6of5hy/video/upload/v1790872823/23_FINAL_pugs7d.mp4" data-title="23 Final" data-tag="Early Work">
+        <div class="card-thumb"><div class="thumb-bg g-h4" data-num="04"></div><video class="card-video" muted loop playsinline preload="none" poster="https://res.cloudinary.com/tv6of5hy/video/upload/so_auto/v1790872823/23_FINAL_pugs7d.jpg"></video><div class="card-overlay"><span class="overlay-tag">Watch →</span></div></div>
+        <div class="card-foot"><span class="c-name">23 Final</span><span class="c-tag">Early Work</span></div><div class="card-border"></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-grid" id="contact">
+  <div>
+    <h2 class="contact-heading">Let's work<br>together.</h2>
+    <p class="contact-sub">Available for design projects, video production, and social media campaigns. Based in Nigeria, working globally.</p>
+  </div>
+  <div class="contact-rows">
+    <a href="https://instagram.com/stephanelkanah" target="_blank" class="c-row"><div class="c-row-left"><span class="c-platform">Instagram</span><span class="c-handle">@stephanelkanah</span></div><span class="c-arrow">→</span></a>
+    <a href="mailto:legacytechn@gmail.com" class="c-row"><div class="c-row-left"><span class="c-platform">Email</span><span class="c-handle">legacytechn@gmail.com</span></div><span class="c-arrow">→</span></a>
+    <a href="https://x.com/l3gcaygraphics" target="_blank" class="c-row"><div class="c-row-left"><span class="c-platform">Twitter / X</span><span class="c-handle">@l3gcaygraphics</span></div><span class="c-arrow">→</span></a>
+    <a href="https://linkedin.com/in/stephanelkanah" target="_blank" class="c-row"><div class="c-row-left"><span class="c-platform">LinkedIn</span><span class="c-handle">Stephan Elkanah</span></div><span class="c-arrow">→</span></a>
+  </div>
+</div>
+
+<!-- MAGNETIC CTA -->
+<section class="cta-section">
+  <p class="cta-label">Ready to create something?</p>
+  <h2 class="cta-heading">Let's build your<br><em>next project.</em></h2>
+  <a href="https://wa.me/234XXXXXXXXXXX" target="_blank" class="mag-btn" id="mag-btn">
+    <span class="mag-sweep" id="mag-sweep"></span>
+    <span class="mag-label" id="mag-label">Message me now <span class="mag-arrow">→</span></span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="l3gacy-visuals-home.html" class="f-logo">L<em>3</em>GACY VISUALS</a>
+  <span class="f-note">Creative Direction &nbsp;&middot;&nbsp; Visual Systems &nbsp;&middot;&nbsp; Social Storytelling</span>
+</footer>
+
+<script>
+/* ── MARQUEE (JS-driven, supports drag) ─── */
+class Marquee {
+  constructor(track) {
+    this.track    = track;
+    this.reversed = track.dataset.reverse === 'true';
+    this.speed    = 1.1;
+    this.hw       = 0;
+    this.pos      = 0;
+    this.dragging = false;
+    this.hovered  = false;
+    this.paused   = false;
+    this.velocity = 0;
+    this.lastX    = 0;
+    track.style.animation = 'none';
+  }
+
+  init() {
+    this.hw  = this.track.scrollWidth / 2;
+    this.pos = this.reversed ? -this.hw : 0;
+    this._apply();
+    this._bind();
+  }
+
+  _apply() { this.track.style.transform = `translateX(${this.pos}px)`; }
+
+  _norm() {
+    while (this.pos >  0)        this.pos -= this.hw;
+    while (this.pos < -this.hw)  this.pos += this.hw;
+  }
+
+  step() {
+    if (!this.dragging && !this.hovered && !this.paused) {
+      this.pos += this.reversed ? this.speed : -this.speed;
+    }
+    if (!this.dragging && Math.abs(this.velocity) > 0.15) {
+      this.pos += this.velocity;
+      this.velocity *= 0.93;
+    }
+    this._norm();
+    this._apply();
+  }
+
+  _bind() {
+    const wrap = this.track.parentElement;
+    wrap.addEventListener('mouseenter', () => this.hovered = true);
+    wrap.addEventListener('mouseleave', () => { this.hovered = false; if(this.dragging){this.dragging=false;wrap.style.cursor='';} });
+
+    wrap.addEventListener('pointerdown', e => {
+      if (e.target.closest('.card-overlay')) return;
+      this.dragging = true;
+      this.lastX    = e.clientX;
+      this.velocity = 0;
+      wrap.style.cursor = 'grabbing';
+      wrap.setPointerCapture(e.pointerId);
+    });
+
+    wrap.addEventListener('pointermove', e => {
+      if (!this.dragging) return;
+      const dx = e.clientX - this.lastX;
+      this.pos     += dx;
+      this.velocity = dx * 0.6;
+      this.lastX    = e.clientX;
+      this._norm();
+    });
+
+    wrap.addEventListener('pointerup',     () => { this.dragging = false; wrap.style.cursor = ''; });
+    wrap.addEventListener('pointercancel', () => { this.dragging = false; wrap.style.cursor = ''; });
+  }
+}
+
+const marquees = [];
+
+function boot() {
+  /* clone cards first */
+  document.querySelectorAll('.marquee-track').forEach(track => {
+    Array.from(track.children).forEach(c => track.appendChild(c.cloneNode(true)));
+  });
+
+  /* init marquees */
+  document.querySelectorAll('.marquee-track').forEach(track => {
+    const m = new Marquee(track);
+    m.init();
+    marquees.push(m);
+  });
+
+  /* RAF loop */
+  (function loop(){ marquees.forEach(m=>m.step()); requestAnimationFrame(loop); })();
+
+  initCards();
+  initObserver();
+}
+
+window.addEventListener('load', boot);
+
+/* ── VIDEO CONSOLE ─── */
+const vconsole  = document.getElementById('vconsole');
+const vcVideo   = document.getElementById('vc-video');
+const vcTitle   = document.getElementById('vc-title');
+const vcTag     = document.getElementById('vc-tag');
+
+function openConsole(src, title, tag) {
+  vcTitle.textContent = title||''; vcTag.textContent = tag||'';
+  vcVideo.src = src; vcVideo.load();
+  vconsole.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  vcVideo.play().catch(()=>{});
+}
+function closeConsole() {
+  vconsole.classList.remove('is-open');
+  document.body.style.overflow = '';
+  vcVideo.pause();
+  setTimeout(()=>{ vcVideo.src=''; }, 350);
+}
+document.getElementById('vc-close').addEventListener('click', closeConsole);
+document.getElementById('vc-backdrop').addEventListener('click', closeConsole);
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeConsole(); });
+
+/* ── CARD INTERACTIONS ─── */
+function initCards() {
+  document.querySelectorAll('.card').forEach(card => {
+    const video = card.querySelector('.card-video');
+    const src   = card.dataset.video;
+    const title = card.dataset.title;
+    const tag   = card.dataset.tag;
+    const mid   = card.dataset.midpoint === 'true';
+    let   ready = false;
+
+    if (video && mid) {
+      video.addEventListener('loadedmetadata', () => { video.currentTime = video.duration/2; });
+    }
+
+    if (video && src) {
+      card.addEventListener('mouseenter', () => {
+        if(!ready){ video.src=src; video.load(); ready=true; }
+        video.play().catch(()=>{});
+      });
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        if(!mid) video.currentTime=0;
+      });
+    }
+
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      if(src) openConsole(src, title, tag);
+    });
+  });
+}
+
+/* ── AUTOPLAY WHILE IN VIEWPORT ─── */
+function initObserver() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const card  = entry.target;
+      const video = card.querySelector('.card-video');
+      const src   = card.dataset.video;
+      if(!video||!src) return;
+      if(entry.isIntersecting){
+        if(!video.src){ video.src=src; video.load(); }
+        video.play().catch(()=>{});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 60px 0px 60px' });
+  document.querySelectorAll('.card[data-video]').forEach(c=>obs.observe(c));
+}
+
+/* ── GLOBAL PAUSE BUTTON ─── */
+let globalPaused = false;
+document.getElementById('pause-all').addEventListener('click', () => {
+  globalPaused = !globalPaused;
+  marquees.forEach(m => m.paused = globalPaused);
+  document.querySelectorAll('.card-video').forEach(v => {
+    if(globalPaused) v.pause();
+    else if(v.src) v.play().catch(()=>{});
+  });
+  const btn = document.getElementById('pause-all');
+  btn.innerHTML = globalPaused ? '&#9654; Resume' : '&#9646;&#9646; Pause';
+  btn.classList.toggle('is-paused', globalPaused);
+});
+
+/* ── MAGNETIC BUTTON ─── */
+(function(){
+  const btn=document.getElementById('mag-btn');
+  const sweep=document.getElementById('mag-sweep');
+  const label=document.getElementById('mag-label');
+  if(!btn) return;
+  const REACH=180,PULL=0.25;
+  let bx=0,by=0,bvx=0,bvy=0,tx=0,ty=0,hovered=false;
+  function spring(cur,tgt,vel){const a=(-260*(cur-tgt)-18*vel)/0.4,nv=vel+a*0.016;return{pos:cur+nv*0.016,vel:nv};}
+  (function tick(){const rx=spring(bx,tx,bvx),ry=spring(by,ty,bvy);bx=rx.pos;bvx=rx.vel;by=ry.pos;bvy=ry.vel;btn.style.transform=`translate(${bx}px,${by}px)`;requestAnimationFrame(tick);})();
+  window.addEventListener('pointermove',e=>{
+    const r=btn.getBoundingClientRect();
+    const dx=e.clientX-(r.left+r.width/2-bx),dy=e.clientY-(r.top+r.height/2-by);
+    const inside=e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom;
+    if(inside!==hovered){
+      const lx=Math.max(0,Math.min(r.width,e.clientX-r.left)),ly=Math.max(0,Math.min(r.height,e.clientY-r.top)),d=2*Math.hypot(r.width,r.height);
+      sweep.style.cssText=`width:${d}px;height:${d}px;top:${ly}px;left:${lx}px;margin-left:${-d/2}px;margin-top:${-d/2}px;`;
+      hovered=inside;sweep.classList.toggle('is-active',inside);label.classList.toggle('is-hovered',inside);
+    }
+    const ex=Math.max(0,Math.abs(dx)-r.width/2),ey=Math.max(0,Math.abs(dy)-r.height/2),gap=Math.hypot(ex,ey);
+    if(gap>REACH){tx=0;ty=0;return;}
+    const f=1-gap/REACH;tx=dx*PULL*f;ty=dy*PULL*f;
+  });
+  document.addEventListener('pointerleave',()=>{tx=0;ty=0;hovered=false;sweep.classList.remove('is-active');label.classList.remove('is-hovered');});
+})();
+</script>
+</body>
+</html>
